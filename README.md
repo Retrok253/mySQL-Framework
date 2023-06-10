@@ -1,13 +1,13 @@
 # MySQL-Framework for Gothic 2 Online.
 
-#Example loading framework to server
+Example loading framework to server
 ```
 	<module src="mySQL/MySQL.so" type="server"/>
 	<script src="mySQL/mySQL.nut" type="server" />
 	<script src="config.nut" type="server" />
 ```
 
-#To connect with MySQL open the config.nut file and change details
+To connect with MySQL open the config.nut file and change details
 
 ```
 //Example get function
