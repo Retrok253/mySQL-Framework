@@ -1,4 +1,4 @@
-# MySQL-Framework for Gothic 2 Online.
+# mySQL-Framework for Gothic 2 Online.
 To connect with MySQL download module from https://forum.gothic-online.com.pl/topic/30-mysql/ and add to server with mySQL-Framework, later open the config.nut file and change details
 
 Example loading framework with module to server (Ubuntu 18.04.6 LTS)
