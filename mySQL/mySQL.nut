@@ -49,9 +49,9 @@ class mySQL{
 			}
         }
     }
-
-}
-
-addEventHandler("onInit", function (){
+	
+    function onInit(){
 	MySQL = mySQL();
-});
+    }
+}
+addEventHandler("onInit", mySQL.onInit.bindenv(this));
