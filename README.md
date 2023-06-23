@@ -3,9 +3,9 @@ This framework works at top of this module https://forum.gothic-online.com.pl/to
 
 # Example loading framework with module to server (Ubuntu 18.04.6 LTS)
 ```xml
-	<module src="MySQL.x64.so" type="server"/>
-	<script src="config.nut" type="shared" />
-	<script src="mySQL/mySQL.nut" type="server" />
+<module src="MySQL.x64.so" type="server"/>
+<script src="config.nut" type="server" />
+<script src="mySQL/mySQL.nut" type="server" />
 ```
 
 # Example get function

@@ -5,10 +5,10 @@ class mySQL {
 
 	constructor() {
 		mysql_option_reconnect(true);
-		this.handler = mysql_connect(Config.Database.host.tostring(), Config.Database.user.tostring(), Config.Database.password.tostring(), Config.Database.database.tostring(),Config.Database.port.tointeger());
+		this.handler = mysql_connect(dbConfig.host.tostring(), dbConfig.user.tostring(), dbConfig.password.tostring(), dbConfig.database.tostring(), dbConfig.port.tointeger());
 
 		if (this.handler) {
-			mysql_set_character_set(this.handler, Config.Database.charset.tostring());
+			mysql_set_character_set(this.handler, dbConfig.charset.tostring());
 			print("\n-========================================-\nMySQL\n> Connection established.\n-========================================-\n");
 		} else {
 			print("\n-========================================-\nMySQL\n> Check your database credentials.\n-========================================-\n");
