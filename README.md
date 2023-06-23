@@ -1,45 +1,54 @@
 # mySQL-Framework for Gothic 2 Online.
-To connect with MySQL download module from https://forum.gothic-online.com.pl/topic/30-mysql/ and add to server with mySQL-Framework, later open the config.nut file and change details
+This framework works at top of this module https://forum.gothic-online.com.pl/topic/30-mysql/, first you have to load this module, then you'd have to load this framework, later open the config.nut file and change your MySQL credentials. Below you can see example XML file on how it should look like.
 
-Example loading framework with module to server (Ubuntu 18.04.6 LTS)
+# Example loading framework with module to server (Ubuntu 18.04.6 LTS)
+```xml
+<module src="MySQL.x64.so" type="server"/>
+<script src="config.nut" type="server" />
+<script src="mySQL/mySQL.nut" type="server" />
 ```
-	<module src="MySQL.x64.so" type="server"/>
-	<script src="config.nut" type="shared" />
-	<script src="mySQL/mySQL.nut" type="server" />
-```
-Example get function
-```
-local name = "nickname";
-local pass = "secretpassword";
 
-local result = MySQL.Get("SELECT * FROM accounts WHERE name = '"+ name +"'");
-	if(result){
-		if(result["password"] == sha256(pass)){
-		
-		}
+# Example get function
+```js
+local username = "nickname";
+local password = "secretpassword";
+
+local result = MySQL.get(format("SELECT * FROM accounts WHERE username = %s", username));
+
+if (result) {
+	// Account with specified username found.
+	if (result["password"] == sha256(password)) {
+		// Corrent password.
+	} else {
+		// Wrong password.
+	}
+} else {
+	// Account with specified username not found.
+}
+```
+
+# Example set function
+```js
+local username = "nickname";
+local password = "secretpassword";
+
+local result = MySQL.get(format("SELECT * FROM accounts WHERE name = %s", username));
+
+if (!result) {
+	if (MySQL.set(format("INSERT INTO accounts (username, password) VALUES (%s, %s)", username, password))) {
+		// Insert successful.
+	} else {
+		// Insert failure.
 	}
 }
 ```
-Example set function
-```
-local name = "nickname";
-local pass = "secretpassword";
 
-local result = MySQL.Get("SELECT * FROM accounts WHERE name = '"+ name +"'");
-	if(!result){
-		if(MySQL.Set("INSERT INTO accounts (name, password) VALUES ('"+ name +"', '"+ sha256(pass) +"')")){ // Insert successful
-			print("Success");
-		}else{ // Insert failure
-			print("Error");
-		}
-	}
-}
-```
-#Example getAll function
-```
-local result = MySQL.GetAll("SELECT * FROM accounts");
-if(result){
-	foreach(i, val in result){
+# Example getAll function
+```js
+local result = MySQL.getAll("SELECT * FROM accounts");
+
+if (result) {
+	foreach (i, val in result) {
 		print(result[i]["name"]);
 	}
 }
