@@ -42,7 +42,7 @@ class mySQL {
 	function getAll(arg) {
 		if (!arg) return print("MySQL Framework: (getAll) No args provided.");
 		
-        local result = mysql_query(this.handler, mysql_real_escape_string(this.handler, arg));
+		local result = mysql_query(this.handler, mysql_real_escape_string(this.handler, arg));
 
 		if (result != null) {
 			local returnRows = [];
